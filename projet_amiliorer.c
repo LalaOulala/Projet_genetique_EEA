@@ -9,7 +9,7 @@
 											macro #define
 ***************************************************************************************************/
 
-#define dim 100
+#define dim 128
 #define bit_Y0 12
 #define bit_B 17
 #define bit_DL 19
@@ -36,7 +36,7 @@ typedef double vect[dim] ;//crée un nouveau type de données appelé vect qui e
 											zone de prototype 
 ***************************************************************************************************/
 
-double echantillon (double a , double b) ; 
+double tirage (double a , double b) ; 
 
 void lecture(char *filepath, datas x, datas y, datas z, int *n);
 
@@ -58,7 +58,6 @@ void binaire(int x , int bit , int a[bit]) ;
 
 double conversion_binaire_entier(individu population[dim] , int nb_bit , int indice_min) ;
 
-individu clone(individu x) ;
 
 double densite(double x) ;
 
@@ -88,10 +87,10 @@ int main(void)
 
 		//echantillonage des parametres
 		
-		Y0[i] = echantillon (2100 , 2300) ;
-		B[i] = echantillon (40000 , 120000) ; 
-		DL[i] = echantillon (100000 , 300000) ;
-		Lo[i] = echantillon (65600000 , 65640000) ;
+		Y0[i] = tirage (2100 , 2300) ;
+		B[i] = tirage (100000 , 1500000) ; 
+		DL[i] = tirage (100000 , 300000) ;
+		Lo[i] = tirage (65600000 , 65640000) ;
 		
 		
 		//conversion entier --> binaire 
@@ -180,7 +179,7 @@ void lecture(char *filepath, datas x, datas y, datas z, int *n) {
 
 
                                                                         // deja optimiser
-double echantillon (double a , double b)
+double tirage (double a , double b)
 {
 	double x ;
 	x = rand()%(int)(((b-a)+1))+a ;  //Renvoie une valeur qui appartient à l'intervalle [a,b]. 
